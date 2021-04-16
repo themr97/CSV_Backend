@@ -5,7 +5,7 @@ const csv = require('csvtojson');
 const cors = require('cors');
 
 
-const CONNECTION_URL = 'mongodb+srv://admin:3ynp6SfeLgeHPYSx@cluster0.e59j9.mongodb.net/'
+const CONNECTION_URL = process.env.URL;
 const app = express();
 
 
@@ -42,6 +42,7 @@ app.post('/upload', (req, res) => {
     }
 
     var file = req.files.file;
+
     file.mv(`${__dirname}/${file.name}`, err => {
         if (err) {
             console.error(err);
